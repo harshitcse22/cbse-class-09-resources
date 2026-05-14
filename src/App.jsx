@@ -1,6 +1,9 @@
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Home from './pages/Home'
+import SubjectList from './pages/SubjectList'
+import BookList from './pages/BookList'
+import ChapterView from './pages/ChapterView'
 import './App.css'
 
 function ScrollToTop() {
@@ -15,9 +18,14 @@ function App() {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/subjects/:subject" element={<SubjectList />} />
+        <Route path="/subjects/:subject/books/:book" element={<BookList />} />
+        <Route path="/subjects/:subject/books/:book/chapters/:chapter" element={<ChapterView />} />
       </Routes>
     </Router>
   )
 }
 
 export default App
+
+

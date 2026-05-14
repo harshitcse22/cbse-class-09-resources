@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Redirect to hash-based URL so React Router can handle it
+      const path = window.location.pathname.replace('/cbse-class-10-resources', '')
+      window.location.replace(
+        '/cbse-class-10-resources/#' + (path || '/')
+      )
+    </script>
+  </head>
+  <body></body>
+</html>
