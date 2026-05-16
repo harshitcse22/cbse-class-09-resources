@@ -43,8 +43,6 @@ export default function Navbar() {
                 <a
                   key={c.label}
                   href={c.href}
-                  target={c.href === '#' ? '_self' : '_blank'}
-                  rel="noopener noreferrer"
                   className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-indigo-50 no-underline"
                 >
                   {c.label}
