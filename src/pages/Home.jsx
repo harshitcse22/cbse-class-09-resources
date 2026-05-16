@@ -160,29 +160,32 @@ export default function Home() {
               {randomPrompt && (
                 <div className="bg-gray-50 border border-gray-200 rounded-xl p-3.5 mb-3.5">
                   <p className="text-xs text-gray-700 leading-relaxed line-clamp-4">{randomPrompt.prompt}</p>
-                  <div className="mt-2.5 flex gap-1.5 flex-wrap justify-center">
-                    <span className="text-[10px] font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-2.5 py-0.5">
-                      {fmt(randomPrompt.subjectSlug)}
-                    </span>
-                    <span className="text-[10px] font-semibold text-gray-600 bg-white border border-gray-200 rounded-full px-2.5 py-0.5">
-                      {randomPrompt.chapterTitle || fmt(randomPrompt.chapterSlug)}
-                    </span>
-                    {(() => {
-                      const categoryBadge = {
-                        'Quick Understanding': { label: 'Learn',           cls: 'text-green-600 bg-green-50 border-green-200' },
-                        'Practice Questions':  { label: 'Practice',        cls: 'text-blue-600 bg-blue-50 border-blue-200'   },
-                        'Quick Review':        { label: 'Quick Revision',  cls: 'text-orange-600 bg-orange-50 border-orange-200' },
-                        'Find My Mistake':     { label: 'Find My Mistake', cls: 'text-red-600 bg-red-50 border-red-200'     },
-                        'Exam Prep':           { label: 'Exam Prep',       cls: 'text-purple-600 bg-purple-50 border-purple-200' },
-                      }
-                      const badge = categoryBadge[randomPrompt.heading]
-                      return badge ? (
-                        <span className={`text-[10px] font-semibold border rounded-full px-2.5 py-0.5 ${badge.cls}`}>
-                          {badge.label}
-                        </span>
-                      ) : null
-                    })()}
-                  </div>
+                  {(() => {
+                    const chapterUrl = `/subjects/${randomPrompt.subjectSlug}/books/${randomPrompt.bookSlug}/chapters/${randomPrompt.chapterSlug}?prompt=${randomPrompt.index ?? 0}`
+                    const categoryBadge = {
+                      'Quick Understanding': { label: 'Learn',           cls: 'text-green-600 bg-green-50 border-green-200' },
+                      'Practice Questions':  { label: 'Practice',        cls: 'text-blue-600 bg-blue-50 border-blue-200'   },
+                      'Quick Review':        { label: 'Quick Revision',  cls: 'text-orange-600 bg-orange-50 border-orange-200' },
+                      'Find My Mistake':     { label: 'Find My Mistake', cls: 'text-red-600 bg-red-50 border-red-200'     },
+                      'Exam Prep':           { label: 'Exam Prep',       cls: 'text-purple-600 bg-purple-50 border-purple-200' },
+                    }
+                    const badge = categoryBadge[randomPrompt.heading]
+                    return (
+                      <div className="mt-2.5 flex gap-1.5 flex-wrap justify-center">
+                        <Link to={chapterUrl} className="no-underline text-[10px] font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-2.5 py-0.5 hover:bg-blue-100 transition-colors">
+                          {fmt(randomPrompt.subjectSlug)}
+                        </Link>
+                        <Link to={chapterUrl} className="no-underline text-[10px] font-semibold text-gray-600 bg-white border border-gray-200 rounded-full px-2.5 py-0.5 hover:bg-gray-100 transition-colors">
+                          {randomPrompt.chapterTitle || fmt(randomPrompt.chapterSlug)}
+                        </Link>
+                        {badge && (
+                          <Link to={chapterUrl} className={`no-underline text-[10px] font-semibold border rounded-full px-2.5 py-0.5 hover:opacity-80 transition-opacity ${badge.cls}`}>
+                            {badge.label}
+                          </Link>
+                        )}
+                      </div>
+                    )
+                  })()}
                 </div>
               )}
 
