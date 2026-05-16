@@ -37,7 +37,7 @@ export default function Footer() {
           Explore Edzy <ExternalLink size={12} />
         </a>
       </div>
-      <div className="bg-gradient-to-r from-[#006BFF] to-[#4B35F5] px-5 pb-4 sm:px-12 text-center text-[10px] text-white/80">
+      <div className="bg-gradient-to-r from-[#006BFF] to-[#4B35F5] px-5 pb-4 sm:px-12 text-center text-[12px] text-white/80">
         Made with ❤️ for CBSE students
       </div>
     </footer>
