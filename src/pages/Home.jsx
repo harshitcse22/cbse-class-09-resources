@@ -172,10 +172,10 @@ export default function Home() {
                     const badge = categoryBadge[randomPrompt.heading]
                     return (
                       <div className="mt-2.5 flex gap-1.5 flex-wrap justify-center">
-                        <Link to={chapterUrl} className="no-underline text-[10px] font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-2.5 py-0.5 hover:bg-blue-100 transition-colors">
+                        <Link to={`/subjects/${randomPrompt.subjectSlug}`} className="no-underline text-[10px] font-semibold text-blue-600 bg-blue-50 border border-blue-100 rounded-full px-2.5 py-0.5 hover:bg-blue-100 transition-colors">
                           {fmt(randomPrompt.subjectSlug)}
                         </Link>
-                        <Link to={chapterUrl} className="no-underline text-[10px] font-semibold text-gray-600 bg-white border border-gray-200 rounded-full px-2.5 py-0.5 hover:bg-gray-100 transition-colors">
+                        <Link to={`/subjects/${randomPrompt.subjectSlug}/books/${randomPrompt.bookSlug}/chapters/${randomPrompt.chapterSlug}`} className="no-underline text-[10px] font-semibold text-gray-600 bg-white border border-gray-200 rounded-full px-2.5 py-0.5 hover:bg-gray-100 transition-colors">
                           {randomPrompt.chapterTitle || fmt(randomPrompt.chapterSlug)}
                         </Link>
                         {badge && (
